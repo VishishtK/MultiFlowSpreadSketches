@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.BitSet;
 
 public class VirtualBitMap {
@@ -56,11 +58,19 @@ public class VirtualBitMap {
     }
 
     public void Output(Flow[] flows) {
+        String output = "TrueSpread,EstimatedSpread\n";
         for (int i = 0; i < flows.length; i++) {
-            System.out.println("True Spread: " + flows[i].numberOfPackets + " Estimated Spread: "
-                    + flows[i].estimatedNumberOfPackets);
+            if (flows[i].numberOfPackets > 500)
+                continue;
+            output += flows[i].numberOfPackets + "," + flows[i].estimatedNumberOfPackets + "\n";
         }
-
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("virtualBitMap.csv"));
+            writer.write(output);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
 }
