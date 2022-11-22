@@ -13,8 +13,8 @@ plt.scatter(trueSpread, estimatedSpread, s=100, alpha=0.6,
             edgecolor='black', linewidth=1)
 
 plt.title('Virtual Bit Map')
-plt.xlabel('TrueSpread')
-plt.ylabel('EstimatedSpread')
+plt.xlabel('True Spread')
+plt.ylabel('Estimated Spread')
 
 plt.tight_layout()
 plt.show()
