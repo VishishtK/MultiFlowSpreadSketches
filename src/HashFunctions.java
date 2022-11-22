@@ -7,7 +7,7 @@ public class HashFunctions {
     int hashSize;
     int bound;
 
-    public HashFunctions(int k,int bound){
+    public HashFunctions(int k, int bound) {
         this.hashFunctionInts = IntStream.generate(() -> new Random().nextInt(Integer.MAX_VALUE)).limit(k).toArray();
         this.hashSize = k;
         this.bound = bound;
@@ -19,29 +19,27 @@ public class HashFunctions {
 
         int rv = FNV_32_INIT;
         final int len = k.length();
-        for(int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++) {
             rv ^= k.charAt(i);
             rv *= FNV_32_PRIME;
         }
-        return Math.abs(rv%this.bound);
+        return Math.abs(rv % this.bound);
     }
 
-    public int Hash(int k){
+    public int Hash(int k) {
         return FNVHash(String.valueOf(k ^ hashFunctionInts[0]));
     }
 
-    public int Hash(int k, int functionNumber){
+    public int Hash(int k, int functionNumber) {
         return FNVHash(String.valueOf(k ^ hashFunctionInts[functionNumber]));
     }
 
-    public int Hash(String k, int functionNumber){
-        return Hash(k.hashCode(),functionNumber);
+    public int Hash(String k, int functionNumber) {
+        return Hash(k.hashCode(), functionNumber);
     }
 
-    public int[] HashWithMSB(String k, int functionNumber){
-        return new int[]{k.hashCode()&0b10000000000000000000000000000000,Hash(k.hashCode(),functionNumber)};
+    public int[] HashWithMSB(String k, int functionNumber) {
+        return new int[] { k.hashCode() & 0b10000000000000000000000000000000, Hash(k.hashCode(), functionNumber) };
     }
-
-    
 
 }

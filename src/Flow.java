@@ -4,12 +4,13 @@ import java.util.stream.IntStream;
 public class Flow {
     String flowId;
     int numberOfPackets;
-    int estimatedNumberOfPackets;
+    double estimatedNumberOfPackets;
     int[] packets;
 
-    public Flow(String flowID, int numberOfPackets){
+    public Flow(String flowID, int numberOfPackets) {
         this.flowId = flowID;
         this.numberOfPackets = numberOfPackets;
-        this.packets = IntStream.generate(() -> new Random().nextInt()).limit(numberOfPackets).map(flowId -> Math.abs(flowId)).toArray();
+        this.packets = IntStream.generate(() -> new Random().nextInt()).limit(numberOfPackets)
+                .map(flowId -> Math.abs(flowId)).toArray();
     }
 }
