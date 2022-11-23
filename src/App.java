@@ -46,5 +46,7 @@ public class App {
 
         BsktHLL bsktHLL = new BsktHLL(m, l, bits, k);
         bsktHLL.RecordFlows(flows);
+        bsktHLL.Query(flows);
+        bsktHLL.Output(flows);
     }
 }
