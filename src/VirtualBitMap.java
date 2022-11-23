@@ -1,5 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.BitSet;
 
 public class VirtualBitMap {
@@ -70,6 +71,13 @@ public class VirtualBitMap {
             writer.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        }
+
+        try {
+            Runtime.getRuntime().exec("python3.9 plotGraph.py ");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 
