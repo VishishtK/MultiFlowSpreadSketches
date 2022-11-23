@@ -38,5 +38,13 @@ public class App {
         virtualBitMap.RecordFlows(flows);
         virtualBitMap.Query(flows);
         virtualBitMap.Output(flows);
+
+        m = 4000;
+        int k = 3;
+        l = 128;
+        int bits = 5;
+
+        BsktHLL bsktHLL = new BsktHLL(m, l, bits, k);
+        bsktHLL.RecordFlows(flows);
     }
 }
